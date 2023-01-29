@@ -11,9 +11,23 @@ jobs:
     steps:
           - uses: actions/checkout@v3
 
+          # Build Image
           - name: Build Docker Image
             run: docker build . --file Dockerfile -t charismatic/ma-phones-service:latest
 
+          # Test container
+          - name: Run Docker Container
+            run: docker run -p 8000:80 -d charismatic/ma-phones-service:latest
+          - name: Set Up Python
+            uses: actions/setup-python@4
+            with:
+              python-version: '3.9'
+          - name: Install requirements
+            run: pip install pytest requests
+          - name: Run tests
+            run: pytest
+
+          # Push tag
           - name: Log in to Docker Hub
             uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
             with:
