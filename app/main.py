@@ -77,7 +77,7 @@ async def add_phone(content: CreatePhoneModel):
 async def get_phone_by_id(id: int):
     result = [item for item in phones if item.id == id]
     if len(result) > 0:
-        return result
+        return result[0]
     raise HTTPException(status_code=404, detail="Phone not found")
 
 
