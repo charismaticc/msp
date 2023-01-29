@@ -19,7 +19,7 @@ jobs:
           - name: Run Docker Container
             run: docker run -p 8000:80 -d charismatic/ma-phones-service:latest
           - name: Set Up Python
-            uses: actions/setup-python@4
+            uses: actions/setup-python@v4
             with:
               python-version: '3.9'
           - name: Install requirements
