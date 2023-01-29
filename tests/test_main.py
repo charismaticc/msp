@@ -15,7 +15,7 @@ class TestPhones:
         assert len(response.json()) == 0
 
     def test_create_phones(self):
-        body = {'model': "Model", "developer": "developer"}
+        body = {'model': "Model", "developer": "Developer"}
         response = requests.post(f"{api_url}/v1/phones", json=body)
         assert response.status_code == 200
         assert response.json().get('model') == 'Model'
@@ -29,7 +29,7 @@ class TestPhones:
         assert response.json().get('developer') == 'Developer'
         assert response.json().get('id') == 0
 
-    def test_get_empty_phones(self):
+    def test_get_not_empty_phones(self):
         response = requests.get(f"{api_url}/v1/phones")
         assert response.status_code == 200
         assert len(response.json()) == 1
