@@ -1,5 +1,4 @@
 name: Docker Image CI
-
 on:
   push:
     branches: [ "master" ]
@@ -33,7 +32,6 @@ jobs:
             with:
                 username: ${{ secrets.DOCKER_USERNAME }}
                 password: ${{ secrets.DOCKER_PASSWORD }}
-
 
           - name: Push tag to Docker Hub
             run: docker push charismatic/ma-phones-service:latest
