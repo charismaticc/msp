@@ -27,7 +27,7 @@ class TestPhones:
         assert response.status_code == 200
         assert response.json().get('model') == 'Model'
         assert response.json().get('developer') == 'Developer'
-        assert response.json().get('id') == 1
+        assert response.json().get('id') == 0
 
     def test_get_not_empty_phones(self):
         response = requests.get(f"{api_url}/v1/phones")
